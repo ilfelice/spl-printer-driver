@@ -1,0 +1,17 @@
+SubDir HAIKU_TOP src add-ons print drivers spl ;
+
+SubDirHdrs [ FDirName $(HAIKU_TOP) headers libs print libprint ] ;
+
+AddResources SPL\ Compatible : SPL.rdef ;
+
+Addon SPL\ Compatible :
+	SPLEntry.cpp
+	SPLDriver.cpp
+	SPLCap.cpp
+
+	# portable encoder core
+	spl_encoder.cpp
+	spl_algo0x11.cpp
+	spl_models.cpp
+	: be libprint.a [ TargetLibstdc++ ]
+;

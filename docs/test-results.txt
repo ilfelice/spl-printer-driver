@@ -1,0 +1,379 @@
+ok    3140 single text                                              483030 bytes
+ok    3140 single graphics                                          137802 bytes
+ok    3140 single fsdither                                         3652201 bytes
+ok    3140 single edges                                              37549 bytes
+ok    3140 single fine                                              180032 bytes
+ok    3140 single noise                                            3945790 bytes
+ok    3140 single sparse                                             99191 bytes
+ok    3140 single blank                                                339 bytes
+ok    3140 single black                                              31840 bytes
+ok    3140 all pages A4                                            8844356 bytes
+ok    3140 all pages Letter 1200x600                              14626692 bytes
+ok    3140 all pages A4 1200x600                                  15015674 bytes
+ok    3140 paper Letter                                             657743 bytes
+ok    3140 paper Letter 1200x600                                    271999 bytes
+ok    3140 paper Legal                                              705884 bytes
+ok    3140 paper Legal 1200x600                                     290006 bytes
+ok    3140 paper A4                                                 659480 bytes
+ok    3140 paper A4 1200x600                                        263564 bytes
+ok    3140 paper Executive                                          565396 bytes
+ok    3140 paper Executive 1200x600                                 247663 bytes
+ok    3140 paper Ledger                                            1146869 bytes
+ok    3140 paper Ledger 1200x600                                    519596 bytes
+ok    3140 paper A3                                                 998807 bytes
+ok    3140 paper A3 1200x600                                        461170 bytes
+ok    3140 paper Env10                                              290370 bytes
+ok    3140 paper Env10 1200x600                                     137715 bytes
+ok    3140 paper Monarch                                            233948 bytes
+ok    3140 paper Monarch 1200x600                                    85348 bytes
+ok    3140 paper C5                                                 461453 bytes
+ok    3140 paper C5 1200x600                                        193734 bytes
+ok    3140 paper DL                                                 282411 bytes
+ok    3140 paper DL 1200x600                                        106043 bytes
+ok    3140 paper B4                                                 816787 bytes
+ok    3140 paper B4 1200x600                                        395085 bytes
+ok    3140 paper B5                                                 548350 bytes
+ok    3140 paper B5 1200x600                                        188135 bytes
+ok    3140 paper EnvISOB5                                           528158 bytes
+ok    3140 paper EnvISOB5 1200x600                                  199471 bytes
+ok    3140 paper Postcard                                           195556 bytes
+ok    3140 paper Postcard 1200x600                                   84977 bytes
+ok    3140 paper DoublePostcardRotated                              353142 bytes
+ok    3140 paper DoublePostcardRotated 1200x600                     150470 bytes
+ok    3140 paper A5                                                 373837 bytes
+ok    3140 paper A5 1200x600                                        138706 bytes
+ok    3140 paper A6                                                 193102 bytes
+ok    3140 paper A6 1200x600                                         80003 bytes
+ok    3140 paper B6                                                 304907 bytes
+ok    3140 paper B6 1200x600                                        101685 bytes
+ok    3140 paper C6                                                 245750 bytes
+ok    3140 paper C6 1200x600                                         86164 bytes
+ok    3140 paper Folio                                              684892 bytes
+ok    3140 paper Folio 1200x600                                     286784 bytes
+ok    3140 paper EnvPersonal                                        181577 bytes
+ok    3140 paper EnvPersonal 1200x600                                77993 bytes
+ok    3140 paper Env9                                               257718 bytes
+ok    3140 paper Env9 1200x600                                      115801 bytes
+ok    3140 paper Oficio                                             684564 bytes
+ok    3140 paper Oficio 1200x600                                    302063 bytes
+ok    3140 options EconoMode=ON                                     470875 bytes
+ok    3140 options EconoMode=OFF                                    470876 bytes
+ok    3140 options TonerDensity=1                                   470853 bytes
+ok    3140 options TonerDensity=5                                   470853 bytes
+ok    3140 options PowerSave=False                                  470825 bytes
+ok    3140 options PowerSave=30                                     470854 bytes
+ok    3140 options PowerSave=60                                     470854 bytes
+ok    3140 options JamRecovery=True                                 470852 bytes
+ok    3140 options Altitude=HIGH                                    470854 bytes
+ok    3140 options MediaType=THICK                                  470855 bytes
+ok    3140 options MediaType=ENV                                    470853 bytes
+ok    3140 options MediaType=RECYCLED                               470858 bytes
+ok    3140 options InputSlot=Manual                                 470853 bytes
+ok    3140 options Altitude=HIGH EconoMode=ON InputSlot=Manual JamRecovery=True MediaType=CARD PowerSave=15 TonerDensity=5    470877 bytes
+ok    3140 copies 3                                                 620513 bytes
+ok    3140 copies 300                                               483030 bytes
+ok    3140 manual duplex DuplexNoTumble 1 pages                     470882 bytes
+ok    3140 manual duplex DuplexTumble 1 pages                       470883 bytes
+ok    3140 manual duplex DuplexNoTumble 2 pages                     644227 bytes
+ok    3140 manual duplex DuplexTumble 2 pages                       621002 bytes
+ok    3140 manual duplex DuplexNoTumble 3 pages                     682735 bytes
+ok    3140 manual duplex DuplexTumble 3 pages                       659510 bytes
+ok    3140 manual duplex DuplexNoTumble 4 pages                     867867 bytes
+ok    3140 manual duplex DuplexTumble 4 pages                       845055 bytes
+ok    3140 manual duplex DuplexNoTumble 5 pages                     970427 bytes
+ok    3140 manual duplex DuplexTumble 5 pages                       947615 bytes
+ok    3140 manual duplex DuplexNoTumble 6 pages                    1441131 bytes
+ok    3140 manual duplex DuplexTumble 6 pages                      1418149 bytes
+ok    3140 manual duplex DuplexNoTumble 7 pages                    1591250 bytes
+ok    3140 manual duplex DuplexTumble 7 pages                      1568268 bytes
+ok    3140 manual duplex C5 (odd byte count)                        435571 bytes
+ok    3140 manual duplex Letter 1200x600                           1104427 bytes
+ok    3140 raster full margins 0,0                                  527860 bytes
+ok    3140 raster printable margins 0,0                             527860 bytes
+ok    3140 raster oversize margins 0,0                              534448 bytes
+ok    3140 raster full margins 10,15                                509361 bytes
+ok    3140 raster printable margins 10,15                           503574 bytes
+ok    3140 raster oversize margins 10,15                            520737 bytes
+ok    3140 raster full margins 11,15                                509147 bytes
+ok    3140 raster printable margins 11,15                           508418 bytes
+ok    3140 raster oversize margins 11,15                            520500 bytes
+ok    3140 raster full margins 18,36                                500695 bytes
+ok    3140 raster printable margins 18,36                           498327 bytes
+ok    3140 raster oversize margins 18,36                            510375 bytes
+ok    ml1510 incompressible noise                                   533529 bytes  (bands dropped by both)
+ok    ml2250 incompressible noise                                   533529 bytes  (bands dropped by both)
+ok    ph3117 incompressible noise                                   533529 bytes  (bands dropped by both)
+ok    las100x basic                                                 695332 bytes
+ok    laser10x basic                                                695332 bytes
+ok    las11xx basic                                                 695332 bytes
+ok    laser13x basic                                                695332 bytes
+ok    ljM433 basic                                                  695332 bytes
+ok    ljM436 basic                                                  695332 bytes
+ok    m2020 basic                                                   695332 bytes
+ok    m2070 basic                                                   695332 bytes
+ok    m262x basic                                                   695330 bytes
+ok    m267x basic                                                   695330 bytes
+ok    m283x basic                                                   695330 bytes
+ok    ml1510 basic                                                  694936 bytes
+ok    ml1520 basic                                                  694936 bytes
+ok    ml1610 basic                                                  694936 bytes
+ok    ml1630 basic                                                  694936 bytes
+ok    ml1640 basic                                                  694936 bytes
+ok    ml1660 basic                                                  694936 bytes
+ok    ml1710 basic                                                  694936 bytes
+ok    ml1740 basic                                                  694936 bytes
+ok    ml1750 basic                                                  694936 bytes
+ok    ml1865w basic                                                 695332 bytes
+ok    ml1910 basic                                                  694936 bytes
+ok    ml1915 basic                                                  696244 bytes
+ok    ml2010 basic                                                  694936 bytes
+ok    ml2015 basic                                                  694936 bytes
+ok    ml2150 basic                                                  694931 bytes
+ok    ml2160 basic                                                  694936 bytes
+ok    ml2165 basic                                                  696244 bytes
+ok    ml2240 basic                                                  694936 bytes
+ok    ml2250 basic                                                  694936 bytes
+ok    ml2251 basic                                                  694936 bytes
+ok    ml2510 basic                                                  694936 bytes
+ok    ml2525 basic                                                  694936 bytes
+ok    ml2525w basic                                                 694936 bytes
+ok    ml2550 basic                                                  694931 bytes
+ok    ml2571 basic                                                  694936 bytes
+ok    ml2580 basic                                                  694906 bytes
+ok    ml2580n basic                                                 694906 bytes
+ok    ml3050 basic                                                  694906 bytes
+ok    ml3051 basic                                                  694906 bytes
+ok    ml3051nd basic                                                694931 bytes
+ok    ml3310 basic                                                  694906 bytes
+ok    ml3310nd basic                                                694931 bytes
+ok    ml3471nd basic                                                694931 bytes
+ok    ml3560 basic                                                  694931 bytes
+ok    scx3200 basic                                                 694906 bytes
+ok    scx3400 basic                                                 694906 bytes
+ok    scx4600 basic                                                 694906 bytes
+ok    scx4623f basic                                                694906 bytes
+ok    scx4623fw basic                                               694906 bytes
+ok    scx5330n basic                                                694931 bytes
+ok    scx5530fn basic                                               694931 bytes
+ok    ph3020 basic                                                  695332 bytes
+ok    ph3052 basic                                                  695332 bytes
+ok    ph3115 basic                                                  694936 bytes
+ok    ph3116 basic                                                  694936 bytes
+ok    ph3117 basic                                                  694936 bytes
+ok    ph3120 basic                                                  694936 bytes
+ok    ph3121 basic                                                  694936 bytes
+ok    ph3122 basic                                                  694936 bytes
+ok    ph3124 basic                                                  694936 bytes
+ok    ph3130 basic                                                  694936 bytes
+ok    ph3140 basic                                                  694936 bytes
+ok    ph3150 basic                                                  694936 bytes
+ok    ph3155 basic                                                  694936 bytes
+ok    ph3160 basic                                                  694936 bytes
+ok    ph3260 basic                                                  695330 bytes
+ok    ph3420 basic                                                  694931 bytes
+ok    ph3425 basic                                                  694931 bytes
+ok    ph5500 basic                                                  694931 bytes
+ok    wc3025 basic                                                  695332 bytes
+ok    wc3215 basic                                                  695332 bytes
+ok    wc3225 basic                                                  695330 bytes
+ok    las100x Letter 600x600                                        691275 bytes
+ok    las100x A4 600x600                                            690448 bytes
+ok    las100x Letter 1200x1200                                      915867 bytes
+ok    las100x duplex DuplexNoTumble                                 990906 bytes
+ok    las100x duplex DuplexTumble                                   979623 bytes
+ok    las100x A5                                                    262098 bytes
+ok    las100x Env10                                                 212502 bytes
+ok    las100x DoublePostcardRotated                                 254530 bytes
+ok    las100x Legal                                                 539056 bytes
+ok    las100x A3                                                    729432 bytes
+ok    m262x Letter 600x600                                          691275 bytes
+ok    m262x A4 600x600                                              690448 bytes
+ok    m262x Letter 1200x1200                                        915867 bytes
+ok    m262x duplex DuplexNoTumble                                   979618 bytes
+ok    m262x duplex DuplexTumble                                     979619 bytes
+ok    m262x A5                                                      262098 bytes
+ok    m262x Env10                                                   212502 bytes
+ok    m262x DoublePostcardRotated                                   254530 bytes
+ok    m262x Legal                                                   539056 bytes
+ok    m262x A3                                                      729432 bytes
+ok    ml1510 Letter 600x600                                         656573 bytes
+ok    ml1510 A4 600x600                                             659480 bytes
+ok    ml1510 Letter 300x300                                         191003 bytes
+ok    ml1510 duplex DuplexNoTumble                                  947800 bytes
+ok    ml1510 duplex DuplexTumble                                    934352 bytes
+ok    ml1510 A5                                                     271076 bytes
+ok    ml1510 Env10                                                  222459 bytes
+ok    ml1510 DoublePostcardRotated                                  258694 bytes
+ok    ml1510 Legal                                                  527402 bytes
+ok    ml1510 A3                                                     554826 bytes
+ok    ml1630 Letter 600x600                                         656573 bytes
+ok    ml1630 A4 600x600                                             659480 bytes
+ok    ml1630 Letter 1200x600                                        889135 bytes
+ok    ml1630 duplex DuplexNoTumble                                  947800 bytes
+ok    ml1630 duplex DuplexTumble                                    934352 bytes
+ok    ml1630 A5                                                     271076 bytes
+ok    ml1630 Env10                                                  222459 bytes
+ok    ml1630 DoublePostcardRotated                                  258694 bytes
+ok    ml1630 Legal                                                  527402 bytes
+ok    ml1630 A3                                                     554826 bytes
+ok    ml1660 Letter 600x600                                         657743 bytes
+ok    ml1660 A4 600x600                                             659480 bytes
+ok    ml1660 Letter 1200x600                                        891477 bytes
+ok    ml1660 duplex DuplexNoTumble                                  949795 bytes
+ok    ml1660 duplex DuplexTumble                                    936358 bytes
+ok    ml1660 A5                                                     264592 bytes
+ok    ml1660 Env10                                                  209589 bytes
+ok    ml1660 DoublePostcardRotated                                  252482 bytes
+ok    ml1660 Legal                                                  528288 bytes
+ok    ml1660 A3                                                     723093 bytes
+ok    ml1750 Letter 600x600                                         657743 bytes
+ok    ml1750 A4 600x600                                             659480 bytes
+ok    ml1750 Letter 300x300                                         191295 bytes
+ok    ml1750 duplex DuplexNoTumble                                  949796 bytes
+ok    ml1750 duplex DuplexTumble                                    936359 bytes
+ok    ml1750 A5                                                     264592 bytes
+ok    ml1750 Env10                                                  209589 bytes
+ok    ml1750 DoublePostcardRotated                                  252482 bytes
+ok    ml1750 Legal                                                  528288 bytes
+ok    ml1750 A3                                                     723093 bytes
+ok    ml1915 Letter 600x600                                         691215 bytes
+ok    ml1915 A4 600x600                                             691324 bytes
+ok    ml1915 Letter 1200x600                                        916674 bytes
+ok    ml1915 duplex DuplexNoTumble                                  990814 bytes
+ok    ml1915 duplex DuplexTumble                                    979535 bytes
+ok    ml1915 A5                                                     262939 bytes
+ok    ml1915 Env10                                                  213476 bytes
+ok    ml1915 DoublePostcardRotated                                  255322 bytes
+ok    ml1915 Legal                                                  539028 bytes
+ok    ml1915 A3                                                     730352 bytes
+ok    ml2010 Letter 600x600                                         657743 bytes
+ok    ml2010 A4 600x600                                             659480 bytes
+ok    ml2010 Letter 1200x600                                        891477 bytes
+ok    ml2010 duplex DuplexNoTumble                                  949795 bytes
+ok    ml2010 duplex DuplexTumble                                    936358 bytes
+ok    ml2010 A5                                                     264592 bytes
+ok    ml2010 Env10                                                  209589 bytes
+ok    ml2010 DoublePostcardRotated                                  252482 bytes
+ok    ml2010 Legal                                                  528288 bytes
+ok    ml2010 A3                                                     723093 bytes
+ok    ml2150 Letter 600x600                                         657743 bytes
+ok    ml2150 A4 600x600                                             659480 bytes
+ok    ml2150 Letter 1200x1200                                       946952 bytes
+ok    ml2150 Letter 300x300                                         191295 bytes
+ok    ml2150 duplex DuplexNoTumble                                  936354 bytes
+ok    ml2150 duplex DuplexTumble                                    936355 bytes
+ok    ml2150 A5                                                     264592 bytes
+ok    ml2150 Env10                                                  209589 bytes
+ok    ml2150 DoublePostcardRotated                                  252482 bytes
+ok    ml2150 Legal                                                  528288 bytes
+ok    ml2150 A3                                                     723093 bytes
+ok    ml2160 Letter 600x600                                         657743 bytes
+ok    ml2160 A4 600x600                                             659480 bytes
+ok    ml2160 Letter 1200x1200                                       946952 bytes
+ok    ml2160 duplex DuplexNoTumble                                  949795 bytes
+ok    ml2160 duplex DuplexTumble                                    936358 bytes
+ok    ml2160 A5                                                     264592 bytes
+ok    ml2160 Env10                                                  209589 bytes
+ok    ml2160 DoublePostcardRotated                                  252482 bytes
+ok    ml2160 Legal                                                  528288 bytes
+ok    ml2160 A3                                                     723093 bytes
+ok    ml2165 Letter 600x600                                         691215 bytes
+ok    ml2165 A4 600x600                                             691324 bytes
+ok    ml2165 Letter 1200x1200                                       917591 bytes
+ok    ml2165 duplex DuplexNoTumble                                  990814 bytes
+ok    ml2165 duplex DuplexTumble                                    979535 bytes
+ok    ml2165 A5                                                     262939 bytes
+ok    ml2165 Env10                                                  213476 bytes
+ok    ml2165 DoublePostcardRotated                                  255322 bytes
+ok    ml2165 Legal                                                  539028 bytes
+ok    ml2165 A3                                                     730352 bytes
+ok    ml2250 Letter 600x600                                         656573 bytes
+ok    ml2250 A4 600x600                                             659480 bytes
+ok    ml2250 Letter 1200x1200                                       944686 bytes
+ok    ml2250 duplex DuplexNoTumble                                  947801 bytes
+ok    ml2250 duplex DuplexTumble                                    934353 bytes
+ok    ml2250 A5                                                     271076 bytes
+ok    ml2250 Env10                                                  222459 bytes
+ok    ml2250 DoublePostcardRotated                                  258694 bytes
+ok    ml2250 Legal                                                  527402 bytes
+ok    ml2250 A3                                                     554826 bytes
+ok    ml2510 Letter 600x600                                         656573 bytes
+ok    ml2510 A4 600x600                                             659480 bytes
+ok    ml2510 Letter 1200x600                                        889135 bytes
+ok    ml2510 duplex DuplexNoTumble                                  947801 bytes
+ok    ml2510 duplex DuplexTumble                                    934353 bytes
+ok    ml2510 A5                                                     271076 bytes
+ok    ml2510 Env10                                                  222459 bytes
+ok    ml2510 DoublePostcardRotated                                  258694 bytes
+ok    ml2510 Legal                                                  527402 bytes
+ok    ml2510 A3                                                     554826 bytes
+ok    ml2571 Letter 600x600                                         657743 bytes
+ok    ml2571 A4 600x600                                             659480 bytes
+ok    ml2571 Letter 300x300                                         191295 bytes
+ok    ml2571 duplex DuplexNoTumble                                  949795 bytes
+ok    ml2571 duplex DuplexTumble                                    936358 bytes
+ok    ml2571 A5                                                     264592 bytes
+ok    ml2571 Env10                                                  209589 bytes
+ok    ml2571 DoublePostcardRotated                                  252482 bytes
+ok    ml2571 Legal                                                  528288 bytes
+ok    ml2571 A3                                                     723093 bytes
+ok    ml2580 Letter 600x600                                         657743 bytes
+ok    ml2580 A4 600x600                                             659480 bytes
+ok    ml2580 Letter 1200x1200                                       946952 bytes
+ok    ml2580 A5                                                     264592 bytes
+ok    ml2580 Env10                                                  209589 bytes
+ok    ml2580 DoublePostcardRotated                                  252482 bytes
+ok    ml2580 Legal                                                  528288 bytes
+ok    ml2580 A3                                                     723093 bytes
+ok    ml3051nd Letter 600x600                                       657743 bytes
+ok    ml3051nd A4 600x600                                           659480 bytes
+ok    ml3051nd Letter 1200x1200                                     946952 bytes
+ok    ml3051nd duplex DuplexNoTumble                                936353 bytes
+ok    ml3051nd duplex DuplexTumble                                  936354 bytes
+ok    ml3051nd A5                                                   264592 bytes
+ok    ml3051nd Env10                                                209589 bytes
+ok    ml3051nd DoublePostcardRotated                                252482 bytes
+ok    ml3051nd Legal                                                528288 bytes
+ok    ml3051nd A3                                                   723093 bytes
+ok    ml3471nd Letter 600x600                                       657743 bytes
+ok    ml3471nd A4 600x600                                           659480 bytes
+ok    ml3471nd Letter 1200x1200                                     946952 bytes
+ok    ml3471nd duplex DuplexNoTumble                                936354 bytes
+ok    ml3471nd duplex DuplexTumble                                  936355 bytes
+ok    ml3471nd A5                                                   264592 bytes
+ok    ml3471nd Env10                                                209589 bytes
+ok    ml3471nd DoublePostcardRotated                                252482 bytes
+ok    ml3471nd Legal                                                528288 bytes
+ok    ml3471nd A3                                                   723093 bytes
+ok    ph3117 Letter 600x600                                         656573 bytes
+ok    ph3117 A4 600x600                                             659480 bytes
+ok    ph3117 duplex DuplexNoTumble                                  947800 bytes
+ok    ph3117 duplex DuplexTumble                                    934352 bytes
+ok    ph3117 A5                                                     271076 bytes
+ok    ph3117 Env10                                                  222459 bytes
+ok    ph3117 DoublePostcardRotated                                  258694 bytes
+ok    ph3117 Legal                                                  527402 bytes
+ok    ph3117 A3                                                     554826 bytes
+ok    ph3150 Letter 600x600                                         657743 bytes
+ok    ph3150 A4 600x600                                             659480 bytes
+ok    ph3150 duplex DuplexNoTumble                                  949795 bytes
+ok    ph3150 duplex DuplexTumble                                    936358 bytes
+ok    ph3150 A5                                                     264592 bytes
+ok    ph3150 Env10                                                  209589 bytes
+ok    ph3150 DoublePostcardRotated                                  252482 bytes
+ok    ph3150 Legal                                                  528288 bytes
+ok    ph3150 A3                                                     723093 bytes
+ok    ph3420 Letter 600x600                                         657743 bytes
+ok    ph3420 A4 600x600                                             659480 bytes
+ok    ph3420 Letter 300x300                                         191295 bytes
+ok    ph3420 duplex DuplexNoTumble                                  936353 bytes
+ok    ph3420 duplex DuplexTumble                                    936354 bytes
+ok    ph3420 A5                                                     264592 bytes
+ok    ph3420 Env10                                                  209589 bytes
+ok    ph3420 DoublePostcardRotated                                  252482 bytes
+ok    ph3420 Legal                                                  528288 bytes
+ok    ph3420 A3                                                     723093 bytes
+
+73 models, 20 distinct parameter sets
+375 of 375 jobs identical to SpliX (259633815 bytes compared); 0 failed
+3 jobs contained incompressible bands that both encoders left out

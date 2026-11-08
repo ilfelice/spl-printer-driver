@@ -1,0 +1,75 @@
+# Builds the "SPL Compatible" printer driver add-on.  Run this ON HAIKU:
+#
+#   make -f Makefile.haiku                  build the driver
+#   make -f Makefile.haiku install-driver   copy it into your add-ons folder
+#   make -f Makefile.haiku DEFINES=DBG      build with logging to ~/libprint.log
+#   make -f Makefile.haiku remove-driver    remove it again
+#
+# Only Haiku's standard development tools are needed.  libprint, which Haiku
+# does not install, is compiled in from the copy in libprint/.
+#
+
+NAME = SPL_Compatible
+TYPE = SHARED
+APP_MIME_SIG = application/x-vnd.spl-compatible
+
+SRCS = \
+	haiku/SPLEntry.cpp \
+	haiku/SPLDriver.cpp \
+	haiku/SPLCap.cpp \
+	spl_encoder.cpp \
+	spl_algo0x11.cpp \
+	spl_models.cpp \
+	$(wildcard libprint/*.cpp)
+
+RDEFS = haiku/SPL.rdef
+RSRCS =
+LIBS = be $(STDCPPLIBS)
+LIBPATHS =
+SYSTEM_INCLUDE_PATHS =
+LOCAL_INCLUDE_PATHS = . haiku libprint
+OPTIMIZE := FULL
+LOCALES =
+DEFINES =
+WARNINGS =
+SYMBOLS :=
+DEBUGGER :=
+COMPILER_FLAGS =
+LINKER_FLAGS =
+
+## Include the Makefile-Engine
+DEVEL_DIRECTORY := \
+	$(shell findpaths -r "makefile_engine" B_FIND_PATH_DEVELOP_DIRECTORY 2>/dev/null)
+ifeq ($(strip $(DEVEL_DIRECTORY)),)
+DEVEL_DIRECTORY := $(shell finddir B_SYSTEM_DEVELOP_DIRECTORY)
+endif
+include $(DEVEL_DIRECTORY)/etc/makefile-engine
+
+# The driver appears in the Printers preferences under its file name.
+ADDON_DIR := $(shell finddir B_USER_NONPACKAGED_ADDONS_DIRECTORY)/Print
+ADDON_NAME := SPL Compatible
+BUILT := $(firstword $(wildcard objects.*/$(NAME)))
+
+# A connection type for testing: writes every job to a new file on the
+# Desktop without asking anything (see haiku/SaveToDesktop.cpp).
+TRANSPORT_NAME := Save To Desktop
+TRANSPORT_BUILT := objects.transport/Save_To_Desktop
+
+.PHONY: install-driver remove-driver
+
+$(TRANSPORT_BUILT): haiku/SaveToDesktop.cpp
+	mkdir -p objects.transport
+	g++ -shared -fPIC -O2 -Wno-multichar -o $@ $< -lbe
+
+install-driver: $(TRANSPORT_BUILT)
+	@test -n "$(BUILT)" || { echo "Build the driver first: make -f Makefile.haiku"; exit 1; }
+	mkdir -p "$(ADDON_DIR)/transport"
+	cp "$(BUILT)" "$(ADDON_DIR)/$(ADDON_NAME)"
+	cp "$(TRANSPORT_BUILT)" "$(ADDON_DIR)/transport/$(TRANSPORT_NAME)"
+	@echo "Installed $(ADDON_DIR)/$(ADDON_NAME)"
+	@echo "Installed $(ADDON_DIR)/transport/$(TRANSPORT_NAME)"
+	@echo "Restart Haiku once so that the new connection type is listed."
+
+remove-driver:
+	rm -f "$(ADDON_DIR)/$(ADDON_NAME)"
+	rm -f "$(ADDON_DIR)/transport/$(TRANSPORT_NAME)"

@@ -1,0 +1,162 @@
+#!/usr/bin/env python3
+"""Generate spl_models_generated.inc from SpliX's printer definitions.
+
+Usage: gen_models.py PPD_DIR > spl_models_generated.inc
+
+PPD_DIR must hold the English PPD files compiled from SpliX's *.drv.in
+sources (run ppd/compile.sh + ppdc in a SpliX checkout).  Only the models
+whose pages are encoded with compression algorithm 0x11 on a single (black)
+plane are emitted, because that is the code path this driver implements.
+"""
+import glob
+import os
+import re
+import sys
+
+SOURCE_CODES = {'Auto': 1, 'Manual': 2, 'Multi': 3, 'Upper': 4, 'Lower': 5,
+                'Envelope': 6, 'Tray3': 7}
+
+# Models that have been confirmed to print correctly with *this* driver on
+# real hardware.  Everything else is taken over from SpliX untested.
+VERIFIED = set()
+
+
+def attr(text, key, default=None):
+    m = re.search(r'^\*' + re.escape(key) + r':\s*"?([^"\n]*)"?\s*$', text, re.M)
+    return m.group(1) if m else default
+
+
+def c_string(value):
+    if value is None:
+        return 'NULL'
+    return '"' + value.replace('\\', '\\\\').replace('"', '\\"') + '"'
+
+
+def main():
+    ppd_dir = sys.argv[1]
+    models = []
+    skipped = []
+    for path in sorted(glob.glob(os.path.join(ppd_dir, '*.ppd'))):
+        text = open(path, encoding='latin1').read()
+        ident = os.path.basename(path)[:-4]
+        compression = set(re.findall(r'cupsCompression (\d+)', text))
+        color = attr(text, 'ColorDevice') == 'True'
+        if color or compression != {'17'}:
+            skipped.append((ident, attr(text, 'ModelName'), color, sorted(compression)))
+            continue
+
+        manufacturer = attr(text, 'Manufacturer')
+        name = attr(text, 'ModelName')
+        if name.startswith(manufacturer + ' '):
+            name = name[len(manufacturer) + 1:]
+
+        header = [int(v, 16) for v in re.findall(r'<([0-9A-Fa-f]+)>',
+                  attr(text, 'General DocHeaderValues'))]
+        assert len(header) == 3, ident
+
+        # Hardware margins: identical for every page size of a model.
+        dims = dict((m.group(1), (float(m.group(2)), float(m.group(3))))
+                    for m in re.finditer(r'^\*PaperDimension (\S+?)/[^:]*:\s*"([\d.]+) ([\d.]+)"', text, re.M))
+        margins = set()
+        for m in re.finditer(r'^\*ImageableArea (\S+?)/[^:]*:\s*"([\d.]+) ([\d.]+) ([\d.]+) ([\d.]+)"', text, re.M):
+            w, h = dims[m.group(1)]
+            left, bottom = float(m.group(2)), float(m.group(3))
+            assert abs((w - float(m.group(4))) - left) < 0.01, ident
+            assert abs((h - float(m.group(5))) - bottom) < 0.01, ident
+            margins.add((left, bottom))
+        assert len(margins) == 1, ident
+        margin_x, margin_y = margins.pop()
+
+        default_res = attr(text, 'DefaultResolution')
+        resolutions = []
+        for m in re.finditer(r'^\*Resolution (\S+?)/[^:]*:\s*"<</HWResolution\[(\d+) (\d+)\]', text, re.M):
+            entry = (int(m.group(2)), int(m.group(3)))
+            if m.group(1) == default_res:
+                resolutions.insert(0, entry)
+            else:
+                resolutions.append(entry)
+
+        default_slot = attr(text, 'DefaultInputSlot')
+        sources = []
+        for m in re.finditer(r'^\*InputSlot (\S+?)/', text, re.M):
+            code = SOURCE_CODES[m.group(1)]
+            if m.group(1) == default_slot:
+                sources.insert(0, code)
+            else:
+                sources.append(code)
+
+        has_duplex = re.search(r'^\*OpenUI \*Duplex', text, re.M) is not None
+        manual = attr(text, 'QPDL ManualDuplex') is not None
+        if not has_duplex:
+            duplex = 'kDuplexCapNone'
+        elif manual:
+            duplex = 'kDuplexCapManual'
+        else:
+            duplex = 'kDuplexCapAuto'
+
+        models.append({
+            'id': ident, 'manufacturer': manufacturer, 'name': name,
+            'device_id': attr(text, '1284DeviceID'),
+            'version': int(attr(text, 'QPDL QPDLVersion')),
+            'band': int(attr(text, 'QPDL BandSize')),
+            'header': header,
+            'fixed': attr(text, 'QPDL FixedBandWidth') is not None,
+            'special': attr(text, 'QPDL SpecialBandWidth') is not None,
+            'margin_x': int(round(margin_x * 1000)),
+            'margin_y': int(round(margin_y * 1000)),
+            'duplex': duplex,
+            'reverse': attr(text, 'ReverseDuplex') is not None,
+            'srt': re.search(r'^\*OpenUI \*SRTMode', text, re.M) is not None,
+            'resolutions': tuple(resolutions), 'sources': tuple(sources),
+        })
+
+    models.sort(key=lambda m: (m['manufacturer'].lower(), m['name'].lower()))
+
+    res_sets, src_sets = [], []
+    for m in models:
+        if m['resolutions'] not in res_sets:
+            res_sets.append(m['resolutions'])
+        if m['sources'] not in src_sets:
+            src_sets.append(m['sources'])
+
+    out = []
+    out.append('// Generated by tools/gen_models.py from SpliX\'s driver definitions.')
+    out.append('// Do not edit by hand; edit the generator and run it again.')
+    out.append('//')
+    out.append('// %d models (monochrome, compression algorithm 0x11).' % len(models))
+    out.append('')
+    for i, rs in enumerate(res_sets):
+        out.append('static const Resolution kResolutions%d[] = { %s };'
+                   % (i, ', '.join('{ %d, %d }' % r for r in rs)))
+    out.append('')
+    for i, ss in enumerate(src_sets):
+        out.append('static const uint8_t kSources%d[] = { %s };'
+                   % (i, ', '.join(str(s) for s in ss)))
+    out.append('')
+    out.append('static const Model kModels[] = {')
+    for m in models:
+        ri = res_sets.index(m['resolutions'])
+        si = src_sets.index(m['sources'])
+        out.append('\t{ %s, %s, %s,' % (c_string(m['id']), c_string(m['manufacturer']), c_string(m['name'])))
+        out.append('\t\t%s,' % c_string(m['device_id']))
+        out.append('\t\t%d, 0x11, %d, { %d, %d, %d }, %s, %s,' % (
+            m['version'], m['band'], m['header'][0], m['header'][1], m['header'][2],
+            'true' if m['fixed'] else 'false', 'true' if m['special'] else 'false'))
+        out.append('\t\t%d, %d, %s, %s, %s,' % (
+            m['margin_x'], m['margin_y'], m['duplex'],
+            'true' if m['reverse'] else 'false', 'true' if m['srt'] else 'false'))
+        out.append('\t\tkResolutions%d, %d, kSources%d, %d, %s },' % (
+            ri, len(m['resolutions']), si, len(m['sources']),
+            'true' if m['id'] in VERIFIED else 'false'))
+    out.append('};')
+    out.append('')
+    out.append('// Not included (different compression algorithm or colour):')
+    for ident, name, color, comp in skipped:
+        out.append('//   %-10s %-32s %s algorithm %s' % (
+            ident, name, 'colour,' if color else 'mono,  ',
+            '/'.join('0x%02X' % int(c) for c in comp)))
+    print('\n'.join(out))
+
+
+if __name__ == '__main__':
+    main()
