@@ -53,6 +53,30 @@ in a way that looks like a problem with the makefile rather than the code.
 Then locate the result with `find . -name "SPL Compatible"` and copy it to
 `~/config/non-packaged/add-ons/Print/`.
 
+## Route C: install a package instead
+
+Releases on GitHub may come with a ready-built package,
+`SPLprinterDriver-<version>-x86_64.hpkg`. Installing it needs no build at all:
+
+    pkgman install ./SPLprinterDriver-0.2-1-x86_64.hpkg
+
+(or double-click the file). It puts the driver and the Save To Desktop
+connection into the system folder; `pkgman uninstall SPLprinterDriver`
+removes them again. If a copy from route A is still installed, remove it
+first with `make -f Makefile.haiku remove-driver`, because Haiku looks in
+`~/config/non-packaged` before the system folder and would keep using the
+old copy.
+
+To build the package yourself, after route A's first command:
+
+    make -f Makefile.haiku package
+
+The package file appears in the project folder. `packaging/PackageInfo` holds
+its description; the version is set in `Makefile.haiku`.
+
+As with route A, restart `print_server` (or Haiku) once after installing, so
+that the Save To Desktop connection is listed.
+
 ## Adding the printer
 
 1. Open **Preferences > Printers** and choose **Add**.

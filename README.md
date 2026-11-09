@@ -29,6 +29,8 @@ is still flagged "untested".
     haiku/SPL.rdef, haiku/Jamfile  resources; build file for use inside a Haiku tree
     haiku/SaveToDesktop.cpp        test connection type: writes each job to a Desktop file
     haiku/install-into-haiku-tree.sh
+    packaging/PackageInfo          description of the .hpkg package (version and
+                                   architecture are filled in by Makefile.haiku)
     Makefile.haiku                 builds the add-on on a stock Haiku installation
     libprint/                      unmodified copy of Haiku's libprint (MIT licence)
     docs/BUILDING-ON-HAIKU.md      how to build, install and test on Haiku
@@ -51,6 +53,13 @@ is still flagged "untested".
 The core (the `spl_*` files) is plain C++98 without STL, exceptions or OS-specific calls.
 It compiles without warnings with
 `g++ -std=c++98 -pedantic -Wall -Wextra -Wshadow -Wconversion`.
+
+## Installing on Haiku
+
+`docs/BUILDING-ON-HAIKU.md` describes three ways: building with `make` on a
+stock Haiku installation, building inside a Haiku source tree, and installing
+a ready-built `SPLprinterDriver-<version>-<arch>.hpkg` package with `pkgman`.
+`make -f Makefile.haiku package` builds that package.
 
 ## Building and using the tools (Linux or Haiku)
 

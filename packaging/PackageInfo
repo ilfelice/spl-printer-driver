@@ -1,0 +1,46 @@
+name			SPLprinterDriver
+version			@VERSION@
+architecture	@ARCH@
+summary			"Printer driver for Samsung, Xerox, Dell and HP laser printers that speak SPL/QPDL"
+description		"A native Haiku printer driver for the inexpensive laser printers that
+understand neither PostScript nor PCL but Samsung Printer Language (SPL, also
+called QPDL): most Samsung ML and SCX models and their Xerox Phaser and
+WorkCentre, Dell and HP Laser siblings.
+
+It is modelled on the SpliX driver for Linux and sends the printer exactly
+the same data. 73 monochrome models are listed; the Xerox Phaser 3140 is the
+first target. The driver appears in the Printers preferences as SPL Compatible.
+
+The package also installs a connection type named Save To Desktop, which
+writes print jobs to files on the Desktop instead of sending them to a
+printer. It is meant for testing."
+
+packager		"ilfelice"
+vendor			"ilfelice"
+
+copyrights {
+	"2026 ilfelice"
+	"2006-2008 Aurélien Croc (AP2C) and contributors (SpliX)"
+	"1999-2010 Y. Takagi, Michael Pfeiffer and Haiku, Inc. (libprint)"
+}
+
+licenses {
+	"GNU GPL v2"
+	"MIT"
+}
+
+provides {
+	SPLprinterDriver = @VERSION@
+}
+
+requires {
+	haiku >= R1~beta5
+}
+
+urls {
+	"https://github.com/ilfelice/spl-printer-driver"
+}
+
+source-urls {
+	"https://github.com/ilfelice/spl-printer-driver"
+}

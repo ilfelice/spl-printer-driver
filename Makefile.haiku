@@ -3,6 +3,7 @@
 #   make -f Makefile.haiku                  build the driver
 #   make -f Makefile.haiku install-driver   copy it into your add-ons folder
 #   make -f Makefile.haiku DEFINES=DBG      build with logging to ~/libprint.log
+#   make -f Makefile.haiku package          build an installable .hpkg package
 #   make -f Makefile.haiku remove-driver    remove it again
 #
 # Only Haiku's standard development tools are needed.  libprint, which Haiku
@@ -55,7 +56,16 @@ BUILT := $(firstword $(wildcard objects.*/$(NAME)))
 TRANSPORT_NAME := Save To Desktop
 TRANSPORT_BUILT := objects.transport/Save_To_Desktop
 
-.PHONY: install-driver remove-driver
+# The package (see packaging/PackageInfo).  Keep PACKAGE_VERSION in step with
+# GetVersion() in haiku/SPLEntry.cpp; the part after the dash is the package
+# revision, which goes up when the package changes but the driver does not.
+PACKAGE_NAME := SPLprinterDriver
+PACKAGE_VERSION := 0.2-1
+PACKAGE_ARCH := $(shell getarch)
+PACKAGE_DIR := objects.package
+PACKAGE_FILE := $(PACKAGE_NAME)-$(PACKAGE_VERSION)-$(PACKAGE_ARCH).hpkg
+
+.PHONY: install-driver remove-driver package
 
 $(TRANSPORT_BUILT): haiku/SaveToDesktop.cpp
 	mkdir -p objects.transport
@@ -73,3 +83,19 @@ install-driver: $(TRANSPORT_BUILT)
 remove-driver:
 	rm -f "$(ADDON_DIR)/$(ADDON_NAME)"
 	rm -f "$(ADDON_DIR)/transport/$(TRANSPORT_NAME)"
+
+package: $(TRANSPORT_BUILT)
+	@test -n "$(BUILT)" || { echo "Build the driver first: make -f Makefile.haiku"; exit 1; }
+	rm -rf "$(PACKAGE_DIR)"
+	mkdir -p "$(PACKAGE_DIR)/add-ons/Print/transport"
+	mkdir -p "$(PACKAGE_DIR)/documentation/packages/$(PACKAGE_NAME)"
+	cp "$(BUILT)" "$(PACKAGE_DIR)/add-ons/Print/$(ADDON_NAME)"
+	cp "$(TRANSPORT_BUILT)" "$(PACKAGE_DIR)/add-ons/Print/transport/$(TRANSPORT_NAME)"
+	cp README.md docs/BUILDING-ON-HAIKU.md testpages-A4-ph3140.prn \
+		"$(PACKAGE_DIR)/documentation/packages/$(PACKAGE_NAME)/"
+	sed -e 's/@VERSION@/$(PACKAGE_VERSION)/g' -e 's/@ARCH@/$(PACKAGE_ARCH)/g' \
+		packaging/PackageInfo > "$(PACKAGE_DIR)/.PackageInfo"
+	rm -f "$(PACKAGE_FILE)"
+	package create -C "$(PACKAGE_DIR)" "$(PACKAGE_FILE)"
+	@echo "Created $(PACKAGE_FILE)"
+	@echo "Install it with:  pkgman install ./$(PACKAGE_FILE)"
