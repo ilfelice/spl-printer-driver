@@ -13,13 +13,13 @@ printers, and aims to be on par with it. The first target is the
 |------|------|-------|
 | 1 | Portable encoder core, model table, test tools | Done. Output is byte-for-byte identical to SpliX in all 375 test jobs. |
 | 2 | Haiku printer add-on (libprint glue, model list, settings) | Builds and runs on Haiku. A job it produced was verified to be byte for byte what SpliX sends for the same page image. |
-| 3 | Printing on real hardware | Not done. `testpages-A4-ph3140.prn` is ready to be sent to a printer; see `docs/BUILDING-ON-HAIKU.md`. |
+| 3 | Printing on real hardware | Confirmed on a Xerox Phaser 3140 and a Samsung ML-2510 (November 2026). |
 
-**No printer has printed a page produced by this code yet.** What has been
-shown is that, given the same page image and settings, the driver sends the
-printer exactly the bytes SpliX sends, both for the encoder's test pages
-and for a real page printed on Haiku. That is why every model in the table
-is still flagged "untested".
+**Confirmed on paper so far:** Xerox Phaser 3140 and Samsung ML-2510. The
+other 71 models share the same code path and are expected to work, but each
+stays flagged "untested" in the Add printer dialog until someone reports a
+successful print; `VERIFIED` in `tools/gen_models.py` is where those reports
+are recorded.
 
 ## What is in the package
 

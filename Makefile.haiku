@@ -60,7 +60,7 @@ TRANSPORT_BUILT := objects.transport/Save_To_Desktop
 # GetVersion() in haiku/SPLEntry.cpp; the part after the dash is the package
 # revision, which goes up when the package changes but the driver does not.
 PACKAGE_NAME := SPLprinterDriver
-PACKAGE_VERSION := 0.2-1
+PACKAGE_VERSION := 0.3-1
 PACKAGE_ARCH := $(shell getarch)
 PACKAGE_DIR := objects.package
 PACKAGE_FILE := $(PACKAGE_NAME)-$(PACKAGE_VERSION)-$(PACKAGE_ARCH).hpkg

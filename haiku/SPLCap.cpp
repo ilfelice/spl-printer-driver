@@ -345,7 +345,7 @@ SPLCap::_BuildProtocolClasses()
 			description += "no";
 
 		if (model->verified) {
-			description += "\n\nThis model has been tested with this driver.";
+			description += "\n\nConfirmed to print correctly with this driver.";
 		} else {
 			description += "\n\nNot yet tested on a real printer with this "
 				"driver. The settings for this model are taken from the "

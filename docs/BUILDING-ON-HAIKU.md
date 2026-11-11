@@ -1,10 +1,9 @@
 # Building and testing the driver on Haiku
 
-> **Status (November 2026):** the driver builds on Haiku (route A) and
-> prints to a job file. A job it produced for an A4 page of an e-mail was
-> decoded and checked: the page image is correct, and the job is byte for
-> byte what SpliX produces for the same page image. **Nothing has been
-> printed on paper yet.**
+> **Status (November 2026):** the driver builds on Haiku and prints.
+> Confirmed on paper with a Xerox Phaser 3140 and a Samsung ML-2510; the
+> other models in the list are expected to work but are still unconfirmed.
+> If you try one, please report the result.
 
 ## What you need
 

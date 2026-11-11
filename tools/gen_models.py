@@ -18,7 +18,10 @@ SOURCE_CODES = {'Auto': 1, 'Manual': 2, 'Multi': 3, 'Upper': 4, 'Lower': 5,
 
 # Models that have been confirmed to print correctly with *this* driver on
 # real hardware.  Everything else is taken over from SpliX untested.
-VERIFIED = set()
+VERIFIED = {
+    'ph3140',   # Xerox Phaser 3140, 2026-11-10
+    'ml2510',   # Samsung ML-2510, 2026-11-11 (report on the Haiku forums)
+}
 
 
 def attr(text, key, default=None):
